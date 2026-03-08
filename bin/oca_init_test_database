@@ -18,11 +18,7 @@ else
 fi
 
 # Select addons to install
-if [ -n "${INCLUDE}" ]; then
-    ADDONS=$(manifestoo --select-include "${INCLUDE}" --select-exclude "${EXCLUDE}" list-depends --separator=,)
-else
-    ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} --select-exclude "${EXCLUDE}" list-depends --separator=,)
-fi
+ADDONS=$(ls -1 ${ADDONS_DIR} | tr '\n' ',' | sed 's/,$//')
 
 # Build odoo run parameters
 params=(
