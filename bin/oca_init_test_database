@@ -18,7 +18,7 @@ else
 fi
 
 # Select addons to install
-ADDONS=$(ls -1 ${ADDONS_DIR} | tr '\n' ',' | sed 's/,$//')
+ADDONS=$(find "${ADDONS_DIR}" -maxdepth 1 -mindepth 1 -type d \( -exec test -f '{}/__manifest__.py' \; -o -exec test -f '{}/__openerp__.py' \; \) -printf '%f\n' | tr '\n' ',' | sed 's/,$//')
 
 # Build odoo run parameters
 params=(
