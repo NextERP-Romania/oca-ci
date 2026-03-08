@@ -16,7 +16,7 @@ fi
 unbuffer coverage run --include "${ADDONS_DIR}/*" --branch \
     $(which odoo) \
     -d ${PGDATABASE} \
-    -i ${ADDONS} \
+    -u ${ADDONS} \
     --test-enable \
     --http-interface=127.0.0.1 \
     --stop-after-init | oca_checklog_odoo
